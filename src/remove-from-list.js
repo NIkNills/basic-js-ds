@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
 // const { ListNode } = require('../extensions/list-node.js');
 
@@ -22,11 +22,28 @@ const { NotImplementedError } = require('../extensions/index.js');
  *   }
  * }
  */
-function removeKFromList(/* l, k */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function removeKFromList(l, k) {
+  let result;
+  let newList = [];
+
+  while (l) {
+    newList.push(l.value);
+    l = l.next;
+  }
+
+  newList
+    .filter((e) => e !== k)
+    .reverse()
+    .map((l, i) => {
+      result = {
+        value: l,
+        next: i !== 0 ? result : null,
+      };
+    });
+
+  return result;
 }
 
 module.exports = {
-  removeKFromList
+  removeKFromList,
 };
